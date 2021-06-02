@@ -14,6 +14,9 @@ $ oc create -f https://github.com/jechen0648/ipfailover/blob/main/deploy-ipfailo
 ### create example Appliacations that monitored by ipfailover
 $ oc create -f https://github.com/jechen0648/ipfailover/blob/main/web-server-rc.yaml
 
+### Add checkscript through configmap
+$ oc create configmap keepalived-checkscript --from-file=mycheckscript.sh
+
 ### check the logs of ipfailover pods
 $ oc logs ipfailover-xxxx
 
