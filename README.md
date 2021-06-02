@@ -9,10 +9,10 @@ $ oc create sa ipfailover
 $ oc adm policy add-scc-to-user privileged -z ipfailover
 
 ### create ipfailover by Deployment
-$ oc create -f https://github.com/jechen0648/ipfailover/blob/main/deploy-ipfailover.yaml
+$ oc create -f https://raw.githubusercontent.com/jechen0648/ipfailover/main/deploy-ipfailover.yaml
 
 ### create example Appliacations that monitored by ipfailover
-$ oc create -f https://github.com/jechen0648/ipfailover/blob/main/web-server-rc.yaml
+$ oc create -f https://raw.githubusercontent.com/jechen0648/ipfailover/main/web-server-rc.yaml
 
 ### Add checkscript through configmap
 $ oc create configmap keepalived-checkscript --from-file=mycheckscript.sh
