@@ -12,7 +12,7 @@ $ oc adm policy add-scc-to-user privileged -z ipfailover
 $ oc create -f https://github.com/jechen0648/ipfailover/blob/main/deploy-ipfailover.yaml
 
 ### create example Appliacations that monitored by ipfailover
-$ oc create -f https://raw.githubusercontent.com/lihongan/ipfailover/main/web-server-rc.yaml
+$ oc create -f https://github.com/jechen0648/ipfailover/blob/main/web-server-rc.yaml
 
 ### check the logs of ipfailover pods
 $ oc logs ipfailover-xxxx
