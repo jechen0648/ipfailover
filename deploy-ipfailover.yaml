@@ -49,6 +49,8 @@ spec:
           value: 192.168.1.9
         - name: OPENSHIFT_HA_VRRP_ID_OFFSET
           value: "0"
+        - name: OPENSHIFT_HA_CHECK_SCRIPT
+          value: "/etc/keepalive/mycheckscript.sh"
         image: registry.redhat.io/openshift3/ose-keepalived-ipfailover:v3.11.200
         imagePullPolicy: IfNotPresent
         livenessProbe:
