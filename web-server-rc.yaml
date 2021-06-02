@@ -18,16 +18,3 @@ spec:
         - containerPort: 8080
         - containerPort: 8443
       hostNetwork: true
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: web-service
-spec:
-  selector:
-    app: web-server-rc
-  type: NodePort
-  ports:
-  - port: 80
-    targetPort: 8080
-    nodePort: 30060
