@@ -6,6 +6,7 @@ Create ipfailover resources in OpenShift 4.x
 #step 1: create ServiceAccount ipfailover and update clusterrole.
 $ oc create sa ipfailover
 $ oc adm policy add-scc-to-user privileged -z ipfailover
+$ oc adm policy add-scc-to-user hostnetwork system:serviceaccount:default:ipfailover
 
 #step 2: create ipfailover by Deployment
 $ oc create -f https://raw.githubusercontent.com/jechen0648/ipfailover/main/deploy-ipfailover.yaml
