@@ -38,7 +38,7 @@ spec:
         - name: OPENSHIFT_HA_NETWORK_INTERFACE
         - name: OPENSHIFT_HA_NOTIFY_SCRIPT
         - name: OPENSHIFT_HA_PREEMPTION
-          value: no_preempt
+          value: nopreempt
         - name: OPENSHIFT_HA_REPLICA_COUNT
           value: "1"
         - name: OPENSHIFT_HA_USE_UNICAST
