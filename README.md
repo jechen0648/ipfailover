@@ -3,28 +3,31 @@
 Create ipfailover resources in OpenShift 4.x
 
 ```
-### create ServiceAccount ipfailover and update clusterrole.
+#step 1: create ServiceAccount ipfailover and update clusterrole.
 $ oc create sa ipfailover
 $ oc adm policy add-scc-to-user privileged -z ipfailover
 
-### create ipfailover by Deployment
+#step 2: create ipfailover by Deployment
 $ oc create -f https://raw.githubusercontent.com/jechen0648/ipfailover/main/deploy-ipfailover.yaml
 
-### create example Appliacations that monitored by ipfailover
+#step 3: create application pod or service that is monitored by ipfailover
 $ oc create -f https://raw.githubusercontent.com/jechen0648/ipfailover/main/web-server-rc.yaml
 
-### Add checkscript through configmap
+#step 4: Add checkscript through configmap
 $ oc create configmap keepalived-checkscript --from-file=mycheckscript.sh
 
 
-### When multicast is not allowed in many Cloud Platforms, change to unicast to do the test
+### When multicast is not allowed in many Cloud Platforms, change to unicast to do the test, 
+# first get node's IP addresses from 
+$ oc get node -o wide
+
+# then set unicast peer with nodes' IP address
 $ oc set env deploy/ipfailover OPENSHIFT_HA_USE_UNICAST="true"
 oc set env deploy/ipfailover OPENSHIFT_HA_UNICAST_PEERS="<worker node1's IP address>, <worker node2's ip address>, <worker node3's ip address>"
 
-### Get worker nodes' IP addresses from
-$ oc get node -o wide
 
-### check the logs of ipfailover pods
+
+### check the logs of ipfailover pods to check which node is MASTER, which ones are in BACKUP orr FAULT state
 $ oc logs ipfailover-xxxx
 
 ### check the configuration of keepalived
