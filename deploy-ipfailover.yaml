@@ -51,7 +51,7 @@ spec:
           value: "0"
         - name: OPENSHIFT_HA_CHECK_SCRIPT
           value: "/etc/keepalive/mycheckscript.sh"
-        image: registry.redhat.io/openshift3/ose-keepalived-ipfailover:v3.11.200
+        image: registry.redhat.io/openshift4/ose-keepalived-ipfailover:latest
         imagePullPolicy: IfNotPresent
         livenessProbe:
           exec:
