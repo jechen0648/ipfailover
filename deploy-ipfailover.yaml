@@ -42,7 +42,7 @@ spec:
         - name: OPENSHIFT_HA_REPLICA_COUNT
           value: "1"
         - name: OPENSHIFT_HA_USE_UNICAST
-          value: "false"
+          value: "true"
         - name: OPENSHIFT_HA_VIP_GROUPS
           value: "0"
         - name: OPENSHIFT_HA_VIRTUAL_IPS
