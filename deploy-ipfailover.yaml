@@ -43,6 +43,8 @@ spec:
           value: "1"
         - name: OPENSHIFT_HA_USE_UNICAST
           value: "true"
+        - name: OPENSHIFT_HA_UNICAST_PEERS
+          value: "10.0.128.2,10.0.128.3,10.0.128.4"
         - name: OPENSHIFT_HA_VIP_GROUPS
           value: "0"
         - name: OPENSHIFT_HA_VIRTUAL_IPS
