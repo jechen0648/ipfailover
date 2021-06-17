@@ -3,20 +3,19 @@
 Create ipfailover resources in OpenShift 4.x
 
 ```
-#step 1: create ServiceAccount ipfailover and update clusterrole.
+#step 1: create ServiceAccount ipfailover and add SCC permissions.
 $ oc create sa ipfailover
 $ oc adm policy add-scc-to-user privileged -z ipfailover
 $ oc adm policy add-scc-to-user hostnetwork -z ipfailover
 
-#step 2: create ipfailover by Deployment
-$ oc create -f https://raw.githubusercontent.com/jechen0648/ipfailover/main/deploy-ipfailover.yaml
-
-#step 3: create application pod or service that is monitored by ipfailover
-$ oc create -f https://raw.githubusercontent.com/jechen0648/ipfailover/main/web-server-rc.yaml
-
-#step 4: Add checkscript through configmap
+#step 2: Add checkscript through configmap
 $ oc create configmap keepalived-checkscript --from-file=mycheckscript.sh
 
+# step3:  create ipfailover by Deployment
+$ oc create -f https://raw.githubusercontent.com/jechen0648/ipfailover/main/deploy-ipfailover.yaml
+
+#step 4: create application pod or service that is monitored by ipfailover
+$ oc create -f https://raw.githubusercontent.com/jechen0648/ipfailover/main/web-server-rc.yaml
 
 ### When multicast is not allowed in many Cloud Platforms, change to unicast to do the test, 
 # first get node's IP addresses from 
