@@ -5,7 +5,7 @@ metadata:
     name: web-server-rc
   name: web-server-rc
 spec:
-  replicas: 3
+  replicas: 2
   template:
     metadata:
       labels:
