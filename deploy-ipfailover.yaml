@@ -47,7 +47,7 @@ spec:
         - name: OPENSHIFT_HA_VIP_GROUPS
           value: "0"
         - name: OPENSHIFT_HA_VIRTUAL_IPS
-          value: 172.31.248.100
+          value: 172.31.248.200
         - name: OPENSHIFT_HA_VRRP_ID_OFFSET
           value: "0"
         image: quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:644bf2d63cc24035ec82a39e0b14e6d61e3ca4ba39181b409590132f59bfc2cf
