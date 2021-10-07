@@ -11,10 +11,10 @@ $ oc adm policy add-scc-to-user hostnetwork -z ipfailover
 #step 2: Add checkscript through configmap
 $ oc create configmap keepalived-checkscript --from-file=mycheckscript.sh
 
-# step3:  create ipfailover by Deployment
+# step3:  create ipfailover by Deployment  (Please change replicas number in deploy-ipfailover.yaml to match the number of worker nodes in your cluster)
 $ oc create -f https://raw.githubusercontent.com/jechen0648/ipfailover/main/deploy-ipfailover.yaml
 
-#step 4: create application pod or service that is monitored by ipfailover
+#step 4: create application pod or service that is monitored by ipfailover  ((Please change replicas number in web-server-rc.yaml to match the number of worker nodes in your cluster))
 $ oc create -f https://raw.githubusercontent.com/jechen0648/ipfailover/main/web-server-rc.yaml
 
 ### When multicast is not allowed in many Cloud Platforms, change to unicast to do the test, 
@@ -23,7 +23,7 @@ $ oc get node -o wide
 
 # then set unicast peer with nodes' IP address
 $ oc set env deploy/ipfailover OPENSHIFT_HA_USE_UNICAST="true"
-oc set env deploy/ipfailover OPENSHIFT_HA_UNICAST_PEERS="<worker node1's IP address>, <worker node2's ip address>, <worker node3's ip address>"
+$ oc set env deploy/ipfailover OPENSHIFT_HA_UNICAST_PEERS="<worker node1's IP address>, <worker node2's ip address>, <worker node3's ip address>"
 
 
 
