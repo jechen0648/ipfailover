@@ -11,10 +11,12 @@ $ oc adm policy add-scc-to-user hostnetwork -z ipfailover
 #step 2: Add checkscript through configmap
 $ oc create configmap keepalived-checkscript --from-file=mycheckscript.sh
 
-# step3:  create ipfailover by Deployment  (Please change replicas number in deploy-ipfailover.yaml to match the number of worker nodes in your cluster)
+# step3:  create ipfailover by Deployment  
+(Note: Change replicas number in deploy-ipfailover.yaml to match the number of worker nodes in your cluster)
 $ oc create -f https://raw.githubusercontent.com/jechen0648/ipfailover/main/deploy-ipfailover.yaml
 
-#step 4: create application pod or service that is monitored by ipfailover  ((Please change replicas number in web-server-rc.yaml to match the number of worker nodes in your cluster))
+#step 4: create application pod or service that is monitored by ipfailover  
+(Note: Change replicas number in web-server-rc.yaml to match the number of worker nodes in your cluster)
 $ oc create -f https://raw.githubusercontent.com/jechen0648/ipfailover/main/web-server-rc.yaml
 
 ### When multicast is not allowed in many Cloud Platforms, change to unicast to do the test, 
